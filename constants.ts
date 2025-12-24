@@ -1,6 +1,7 @@
 import { VocabCard, WordForm } from './types';
 
 export const VOCABULARY_DATA: VocabCard[] = [
+  // --- Set 1: Social Media & Psychology ---
   {
     id: 1,
     word: "Comparison culture",
@@ -84,7 +85,7 @@ export const VOCABULARY_DATA: VocabCard[] = [
   {
     id: 11,
     word: "Down the rabbit hole",
-    phonetics: "", // Idiom often doesn't have strict phonetic transcription in cards
+    phonetics: "",
     wordForm: WordForm.PHRASE,
     definition: "Spending way more time than planned.",
     example: "I went down the rabbit hole on Instagram and lost two hours."
@@ -112,5 +113,127 @@ export const VOCABULARY_DATA: VocabCard[] = [
     wordForm: WordForm.PHRASE,
     definition: "Unable to stop checking social media.",
     example: "I realized I was addicted to the feed, so I deleted the app for a while."
+  },
+
+  // --- Set 2: Money & Happiness (From Images) ---
+  {
+    id: 15,
+    word: "Financial security",
+    phonetics: "/faɪˈnæn.ʃəl sɪˈkjʊə.rə.ti/",
+    wordForm: WordForm.NOUN,
+    definition: "Having enough money to meet basic needs without stress.",
+    example: "Financial security reduces anxiety about the future."
+  },
+  {
+    id: 16,
+    word: "Well-being",
+    phonetics: "/ˌwelˈbiː.ɪŋ/",
+    wordForm: WordForm.NOUN,
+    definition: "A person's overall happiness and health.",
+    example: "Money can improve well-being, but only to a certain point."
+  },
+  {
+    id: 17,
+    word: "Materialism",
+    phonetics: "/məˈtɪə.ri.ə.lɪ.zəm/",
+    wordForm: WordForm.NOUN,
+    definition: "The belief that possessions and money bring happiness.",
+    example: "Extreme materialism can lead to emptiness."
+  },
+  {
+    id: 18,
+    word: "Fulfillment",
+    phonetics: "/fʊlˈfɪl.mənt/",
+    wordForm: WordForm.NOUN,
+    definition: "A deep sense of satisfaction or purpose.",
+    example: "Many people find fulfillment through relationships, not money."
+  },
+  {
+    id: 19,
+    word: "Stress-free",
+    phonetics: "/ˌstresˈfriː/",
+    wordForm: WordForm.ADJECTIVE,
+    definition: "Without worry or pressure.",
+    example: "More money can make life more stress-free."
+  },
+  {
+    id: 20,
+    word: "Life satisfaction",
+    phonetics: "/laɪf ˌsæt.ɪsˈfæk.ʃən/",
+    wordForm: WordForm.NOUN,
+    definition: "How happy someone feels about their life overall.",
+    example: "Studies show income affects life satisfaction up to a point."
+  },
+  {
+    id: 21,
+    word: "Privilege",
+    phonetics: "/ˈprɪv.əl.ɪdʒ/",
+    wordForm: WordForm.NOUN,
+    definition: "An advantage some people have.",
+    example: "Financial privilege can open many opportunities."
+  },
+  {
+    id: 22,
+    word: "Emotional needs",
+    phonetics: "/ɪˈməʊ.ʃən.əl niːdz/",
+    wordForm: WordForm.NOUN,
+    definition: "Needs like love, connection, and belonging.",
+    example: "Money cannot replace emotional needs."
+  },
+  {
+    id: 23,
+    word: "Trade-off",
+    phonetics: "/ˈtreɪd.ɒf/",
+    wordForm: WordForm.NOUN,
+    definition: "A balance between two things where one is lost.",
+    example: "High-paying jobs often come with trade-offs."
+  },
+  {
+    id: 24,
+    word: "Meaningful",
+    phonetics: "/ˈmiː.nɪŋ.fəl/",
+    wordForm: WordForm.ADJECTIVE,
+    definition: "Having purpose or emotional value.",
+    example: "Meaningful relationships matter more than wealth."
+  },
+  {
+    id: 25,
+    word: "Buy peace of mind",
+    phonetics: "",
+    wordForm: WordForm.PHRASE,
+    definition: "Reduce stress or worry.",
+    example: "Having savings really buys peace of mind."
+  },
+  {
+    id: 26,
+    word: "Chase money",
+    phonetics: "",
+    wordForm: WordForm.PHRASE,
+    definition: "Focus too much on earning.",
+    example: "Some people chase money and forget to live."
+  },
+  {
+    id: 27,
+    word: "Champagne problem",
+    phonetics: "",
+    wordForm: WordForm.PHRASE,
+    definition: "A problem that exists only because someone is privileged or wealthy; not a real hardship.",
+    example: "Complaining about choosing between two luxury vacations is a champagne problem."
+  },
+  {
+    id: 28,
+    word: "Living paycheck to paycheck",
+    phonetics: "",
+    wordForm: WordForm.PHRASE,
+    definition: "Using almost all your money as soon as you get paid.",
+    example: "I’m living paycheck to paycheck, so saving is really hard."
+  },
+  {
+    id: 29,
+    word: "Worth the bag",
+    phonetics: "",
+    wordForm: WordForm.PHRASE,
+    definition: "Something is worth the money / worth the effort to earn money.",
+    example: "The job is stressful, but the salary is worth the bag."
   }
 ];

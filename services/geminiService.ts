@@ -41,7 +41,7 @@ async function decodeAudioData(
 }
 
 export const speakText = async (text: string): Promise<void> => {
-  if (!process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT') {
+  if (!process.env.API_KEY) {
     console.warn("No API Key found. Using browser fallback.");
     // Fallback to basic browser synthesis if no key
     const utterance = new SpeechSynthesisUtterance(text);
@@ -51,7 +51,7 @@ export const speakText = async (text: string): Promise<void> => {
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
     // Initialize audio context on user gesture if needed
     if (!audioContext) {
