@@ -35,14 +35,14 @@ async function decodeAudioData(
 }
 
 export const speakText = async (text: string): Promise<void> => {
-if (!process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT') {
+  if (!process.env.API_KEY) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
     return;
   }
   try {
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     if (!audioContext) {
       audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
     }

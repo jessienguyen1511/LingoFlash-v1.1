@@ -87,10 +87,10 @@ export default function App() {
               <h1 className="text-xl md:text-2xl font-black font-serif italic tracking-tight">LingoFlash</h1>
            </div>
            {mode === 'MENU' && (
-             <p className="text-[11px] text-gray-400 font-medium tracking-wide leading-tight px-4 text-center">
-               Review with Jessie<br />
-               Choose your preferred mode to start
-             </p>
+             <div className="text-[11px] text-gray-400 font-medium tracking-wide leading-tight px-4 text-center">
+               <p className="font-bold">Review with Jessie</p>
+               <p>Choose your preferred mode to start</p>
+             </div>
            )}
         </div>
       </header>
