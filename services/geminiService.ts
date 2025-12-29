@@ -1,5 +1,7 @@
+
 import { GoogleGenAI, Modality } from "@google/genai";
 
+// Fix: Use AudioContext type instead of the variable name audioContext
 let audioContext: AudioContext | null = null;
 
 // Helper to decode Base64 to ArrayBuffer
@@ -20,7 +22,6 @@ async function decodeAudioData(
   sampleRate: number = 24000,
   numChannels: number = 1
 ): Promise<AudioBuffer> {
-  // Ensure the buffer length is even for Int16Array
   let buffer = data.buffer;
   if (data.byteLength % 2 !== 0) {
     buffer = data.buffer.slice(0, data.byteLength - 1);
@@ -33,7 +34,6 @@ async function decodeAudioData(
   for (let channel = 0; channel < numChannels; channel++) {
     const channelData = audioBuffer.getChannelData(channel);
     for (let i = 0; i < frameCount; i++) {
-      // Normalize Int16 to Float32 [-1.0, 1.0]
       channelData[i] = dataInt16[i * numChannels + channel] / 32768.0;
     }
   }
@@ -41,9 +41,7 @@ async function decodeAudioData(
 }
 
 export const speakText = async (text: string): Promise<void> => {
-  if (!process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT') {
-    console.warn("No API Key found. Using browser fallback.");
-    // Fallback to basic browser synthesis if no key
+  if (!process.env.API_KEY) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
@@ -51,15 +49,13 @@ export const speakText = async (text: string): Promise<void> => {
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
-    // Initialize audio context on user gesture if needed
     if (!audioContext) {
-      // Set sample rate to 24000 to match Gemini TTS output
       audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
     }
     
-    if (audioContext.state === 'suspended') {
+    if (audioContext && audioContext.state === 'suspended') {
       await audioContext.resume();
     }
 
@@ -77,25 +73,66 @@ export const speakText = async (text: string): Promise<void> => {
     });
 
     const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-
-    if (!base64Audio) {
-      throw new Error("No audio data received");
-    }
+    if (!base64Audio) throw new Error("No audio data");
 
     const audioBytes = decode(base64Audio);
     
-    // Decode raw PCM data manually instead of using decodeAudioData
-    const audioBuffer = await decodeAudioData(audioBytes, audioContext, 24000, 1);
-    
-    const source = audioContext.createBufferSource();
-    source.buffer = audioBuffer;
-    source.connect(audioContext.destination);
-    source.start();
+    // Add null check for audioContext before using it
+    if (audioContext) {
+      const audioBuffer = await decodeAudioData(audioBytes, audioContext, 24000, 1);
+      
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioContext.destination);
+      source.start();
+    }
 
   } catch (error) {
     console.error("Gemini TTS Error:", error);
-    // Silent fallback to browser TTS on error
     const utterance = new SpeechSynthesisUtterance(text);
     window.speechSynthesis.speak(utterance);
+  }
+};
+
+export const generateVisual = async (word: string, situation: string): Promise<string | null> => {
+  if (!process.env.API_KEY) return null;
+
+  try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    
+    // Core Concept: Cute Cat Mascot - Soft Flat Style
+    const prompt = `A soft flat illustration featuring a cute anthropomorphic cat mascot representing the concept: "${word}".
+    Context/Situation: "${situation}".
+    Style Rules:
+    - Main character: One primary cute cat with human-like expressive face and poses.
+    - Artistic Style: Soft flat illustration, rounded shapes, smooth edges.
+    - Palette: Warm, muted, friendly colors. 
+    - Shading: Minimal, subtle layering, NO harsh outlines, NO black ink outlines.
+    - Background: Simple, minimal, clean.
+    - Tone: Friendly, approachable, calm, and professional for a learning app.
+    - Mobile optimized: Clear focal point, readable at small sizes.
+    Restrictions: NO human characters, NO realistic photography, NO comic book exaggeration, NO visual clutter.`;
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash-image',
+      contents: {
+        parts: [{ text: prompt }],
+      },
+      config: {
+        imageConfig: {
+          aspectRatio: "16:9"
+        }
+      },
+    });
+
+    for (const part of response.candidates?.[0]?.content?.parts || []) {
+      if (part.inlineData) {
+        return `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+      }
+    }
+    return null;
+  } catch (error) {
+    console.warn(`Gemini Image Generation Failed for ${word}:`, error);
+    return null;
   }
 };

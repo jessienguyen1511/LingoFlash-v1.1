@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 import { VocabCard, WordForm } from '../types';
-import { Volume2, Sparkles, RefreshCcw } from 'lucide-react';
+import { Volume2, Sparkles, Loader2, Footprints } from 'lucide-react';
 import { speakText } from '../services/geminiService';
 
 interface FlashcardProps {
   card: VocabCard;
   isFlipped: boolean;
   onFlip: () => void;
+  preGeneratedUrl?: string;
 }
 
-export const Flashcard: React.FC<FlashcardProps> = ({ card, isFlipped, onFlip }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+export const Flashcard: React.FC<FlashcardProps> = ({ card, isFlipped, onFlip, preGeneratedUrl }) => {
+  const [isPlaying, setIsPlaying] = useState<string | null>(null);
 
-  const handleSpeak = async (e: React.MouseEvent, text: string) => {
-    e.stopPropagation(); // Prevent card flip
+  const handleSpeak = async (e: React.MouseEvent, text: string, id: string) => {
+    e.stopPropagation();
     if (isPlaying) return;
-    
-    setIsPlaying(true);
+    setIsPlaying(id);
     await speakText(text);
-    // Simple timeout to reset icon state, as TTS duration isn't strictly provided beforehand
-    setTimeout(() => setIsPlaying(false), 2000); 
+    setTimeout(() => setIsPlaying(null), 1500); 
   };
 
   const getFormColor = (form: string) => {
@@ -31,85 +30,92 @@ export const Flashcard: React.FC<FlashcardProps> = ({ card, isFlipped, onFlip })
     }
   };
 
+  const isLoading = !preGeneratedUrl;
+
   return (
     <div 
-      className="relative w-full max-w-md h-96 cursor-pointer perspective-1000 group select-none"
+      className="relative w-full max-w-sm h-[65vh] cursor-pointer perspective-1000 select-none mx-auto"
       onClick={onFlip}
     >
-      <div className={`relative w-full h-full duration-500 transform-style-3d transition-transform ${isFlipped ? 'rotate-y-180' : ''}`}>
+      <div className={`relative w-full h-full duration-700 transform-style-3d transition-transform ${isFlipped ? 'rotate-y-180' : ''}`}>
         
-        {/* --- FRONT --- */}
-        <div className="absolute w-full h-full backface-hidden rounded-2xl bg-cream shadow-xl border border-gray-200 flex flex-col items-center justify-center p-8 text-center">
-            
-            {/* Top Right Label */}
+        {/* FRONT: Check Word, Word Form, Pronunciation */}
+        <div className="absolute w-full h-full backface-hidden rounded-[2.5rem] bg-cream shadow-xl border border-gray-200 flex flex-col items-center justify-center p-6 text-center">
             <div className="absolute top-6 right-6">
-                <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${getFormColor(card.wordForm)}`}>
+                <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${getFormColor(card.wordForm)}`}>
                     {card.wordForm}
                 </span>
             </div>
-
-            {/* Content */}
-            <div className="flex-1 flex flex-col items-center justify-center space-y-6">
-                <h2 className="text-4xl font-serif font-bold text-ink mb-2">
+            <div className="flex-1 flex flex-col items-center justify-center">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-ink mb-1 leading-tight">
                     {card.word}
                 </h2>
-                <p className="text-gray-400 text-sm font-medium tracking-widest uppercase">Tap to reveal</p>
+                {card.phonetics && (
+                   <p className="text-gray-400 font-mono text-xs tracking-wide mb-6">
+                     {card.phonetics}
+                   </p>
+                )}
+                <p className="text-gray-400 text-[10px] font-black tracking-widest uppercase">Tap to see meaning</p>
             </div>
-
-            {/* Action Bar */}
-            <div className="absolute bottom-6 w-full flex justify-center">
-                <button 
-                    onClick={(e) => handleSpeak(e, card.word)}
-                    className={`p-3 rounded-full bg-white shadow-md border border-gray-100 hover:bg-gray-50 transition-colors ${isPlaying ? 'text-accent' : 'text-gray-600'}`}
-                    title="Pronounce Word"
-                >
-                    <Volume2 size={24} />
-                </button>
-            </div>
+            <button 
+                onClick={(e) => handleSpeak(e, card.word, 'main')}
+                className={`p-3 rounded-full bg-white shadow-lg border border-gray-100 transition-all ${isPlaying === 'main' ? 'text-accent ring-2 ring-accent/20' : 'text-gray-600'}`}
+            >
+                <Volume2 size={20} />
+            </button>
         </div>
 
-        {/* --- BACK --- */}
-        <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-white shadow-xl border border-gray-200 flex flex-col p-8 overflow-y-auto">
-            
-            <div className="border-b border-gray-100 pb-4 mb-4 flex justify-between items-start">
-               <div>
-                   <h3 className="text-xl font-serif font-bold text-ink">{card.word}</h3>
-                   {card.phonetics && (
-                       <p className="text-gray-500 font-mono text-sm mt-1">{card.phonetics}</p>
-                   )}
-               </div>
-               <span className={`px-2 py-1 rounded text-xs font-bold ${getFormColor(card.wordForm)}`}>
-                   {card.wordForm}
-               </span>
+        {/* BACK: Meaning, Examples, and Automated Illustration */}
+        <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-[2.5rem] bg-white shadow-xl border border-gray-200 flex flex-col overflow-hidden">
+            {/* Image Section (Cute Cat Mascot Style) */}
+            <div className="relative h-[38%] w-full shrink-0 bg-[#fdfaf5] overflow-hidden flex flex-col items-center justify-center border-b border-gray-50">
+                {isLoading ? (
+                  <div className="flex flex-col items-center gap-3 text-gray-300">
+                    <div className="relative">
+                      <Loader2 size={28} className="animate-spin text-accent/40" />
+                      <Footprints className="absolute inset-0 m-auto text-accent/20" size={12} />
+                    </div>
+                    <span className="text-[8px] font-black uppercase tracking-[0.2em] text-gray-400">Jessie is drawing...</span>
+                  </div>
+                ) : (
+                  <>
+                    <img 
+                      src={preGeneratedUrl} 
+                      alt={card.word} 
+                      className="w-full h-full object-cover grayscale-[0.05] contrast-[1.05]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-3 left-5">
+                       <h3 className="text-lg font-serif font-bold text-white leading-none tracking-tight">{card.word}</h3>
+                       <p className="text-white/70 text-[8px] font-black uppercase tracking-widest mt-1">Illustration by Jessie AI</p>
+                    </div>
+                  </>
+                )}
             </div>
 
-            <div className="flex-1 space-y-6">
+            <div className={`flex-1 p-5 overflow-y-auto scrollbar-hide space-y-4`}>
                 <div>
-                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Meaning</h4>
-                    <p className="text-lg text-gray-800 leading-relaxed font-medium">
-                        {card.definition}
-                    </p>
+                    <h4 className="text-[8px] font-black text-gray-300 uppercase tracking-[0.2em] mb-1">Definition</h4>
+                    <p className="text-[13px] text-gray-800 leading-snug font-medium">{card.definition}</p>
                 </div>
-
-                <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 relative">
-                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <Sparkles size={12} className="text-accent"/> Example
+                <div>
+                    <h4 className="text-[8px] font-black text-gray-300 uppercase tracking-[0.2em] mb-2 flex items-center gap-1">
+                        <Sparkles size={8} className="text-accent"/> Examples
                     </h4>
-                    <p className="text-gray-700 italic font-serif leading-relaxed">
-                        "{card.example}"
-                    </p>
-                    <button 
-                        onClick={(e) => handleSpeak(e, card.example)}
-                        className="absolute bottom-2 right-2 p-2 text-gray-400 hover:text-accent transition-colors"
-                        title="Read Example"
-                    >
-                        <Volume2 size={16} />
-                    </button>
+                    <div className="space-y-2">
+                        {card.examples.map((ex, idx) => (
+                            <div key={idx} className="bg-gray-50/50 p-2.5 rounded-xl border border-gray-100 relative pr-9">
+                                <p className="text-[11px] text-gray-600 italic font-serif leading-tight">"{ex}"</p>
+                                <button 
+                                  onClick={(e) => handleSpeak(e, ex, `ex-${idx}`)} 
+                                  className="absolute top-1/2 -translate-y-1/2 right-2 p-1.5 text-gray-300 hover:text-accent transition-colors"
+                                >
+                                    <Volume2 size={14} />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-
-            <div className="mt-4 pt-4 border-t border-gray-100 text-center">
-                <p className="text-xs text-gray-300">Card {card.id}</p>
             </div>
         </div>
       </div>
