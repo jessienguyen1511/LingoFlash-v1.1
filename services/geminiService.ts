@@ -41,7 +41,7 @@ async function decodeAudioData(
 }
 
 export const speakText = async (text: string): Promise<void> => {
-  if (!process.env.API_KEY) {
+  if (!process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT') {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
@@ -49,7 +49,7 @@ export const speakText = async (text: string): Promise<void> => {
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
     
     if (!audioContext) {
       audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
@@ -95,10 +95,10 @@ export const speakText = async (text: string): Promise<void> => {
 };
 
 export const generateVisual = async (word: string, situation: string): Promise<string | null> => {
-  if (!process.env.API_KEY) return null;
+  if (!process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT') return null;
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
     
     // Core Concept: Cute Cat Mascot - Soft Flat Style
     const prompt = `A soft flat illustration featuring a cute anthropomorphic cat mascot representing the concept: "${word}".
