@@ -1,19 +1,18 @@
 import { VocabCard, WordForm } from './types';
 
+// Helper to create a style-compliant SVG Mascot URI with unique paths
+const createMascot = (path: string, color = "#e67e22") => `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none'><rect width='200' height='200' fill='%23fdfaf5' rx='20'/><circle cx='100' cy='110' r='50' fill='${color.replace('#','%23')}' opacity='0.1'/><path d='${path}' stroke='${color.replace('#','%23')}' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><circle cx='80' cy='95' r='4' fill='%232d2d2d'/><circle cx='120' cy='95' r='4' fill='%232d2d2d'/><path d='M95 105c1 2 4 2 5 0 1 2 4 2 5 0' stroke='%232d2d2d' stroke-width='3'/></svg>`;
+
 export const VOCABULARY_DATA: VocabCard[] = [
   {
     id: 1,
     word: "Comparison culture",
     phonetics: "/kəmˈpær.ɪ.sən ˈkʌl.tʃər/",
     wordForm: WordForm.NOUN,
-    definition: "The habit of constantly comparing yourself to others, especially online.",
-    imageUrl: "https://images.unsplash.com/photo-1516251193007-45ef944abb8c?auto=format&fit=crop&q=80&w=400",
-    situation: "You see everyone's 'perfect' vacation photos and feel bad about your own life.",
-    examples: [
-      "Comparison culture on social media can damage self-esteem.",
-      "The stream of curated lives fuels a toxic comparison culture.",
-      "Focus on growth rather than falling into comparison culture."
-    ]
+    definition: "The habit of constantly comparing yourself to others online.",
+    imageUrl: createMascot("M70 70l20-20 20 20M130 70l20-20 20 20M80 140h40M70 110h60"),
+    situation: "Jessie looking at a mirror that shows a 'cooler' cat with more likes.",
+    examples: ["Social media fuels toxic comparison culture.", "Focus on yourself, not comparison culture.", "Comparison culture can hurt your self-esteem."]
   },
   {
     id: 2,
@@ -21,13 +20,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˌvæl.ɪˈdeɪ.ʃən/",
     wordForm: WordForm.NOUN,
     definition: "Approval or recognition from others.",
-    imageUrl: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=crop&q=80&w=400",
-    situation: "You keep refreshing your page to see how many people liked your new profile picture.",
-    examples: [
-      "Many users seek validation through likes and comments.",
-      "Self-worth shouldn't depend on external validation.",
-      "Social media provides instant but often shallow validation."
-    ]
+    imageUrl: createMascot("M70 70l20-20 20 20M130 70l20-20 20 20M100 130a15 15 0 1 0 0-30 15 15 0 0 0 0 30z"),
+    situation: "Jessie holding a giant heart-shaped 'like' button.",
+    examples: ["We shouldn't depend on external validation.", "Seeking validation online is a common habit.", "He felt happy after getting social validation."]
   },
   {
     id: 3,
@@ -35,13 +30,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˌmɪs.ɪn.fəˈmeɪ.ʃən/",
     wordForm: WordForm.NOUN,
     definition: "False or inaccurate information spread unintentionally.",
-    imageUrl: "https://images.unsplash.com/photo-1504711432869-5d39b17815d9?auto=format&fit=crop&q=80&w=400",
-    situation: "Someone shares a news article that turns out to be completely made up.",
-    examples: [
-      "Misinformation spreads quickly on social media.",
-      "The agency was accused of spreading misinformation.",
-      "It is crucial to fact-check to avoid misinformation."
-    ]
+    imageUrl: createMascot("M70 70l20-20 20 20M130 70l20-20 20 20M70 140s20-20 60 0"),
+    situation: "Jessie reading a newspaper that says 'The Moon is Cheese'.",
+    examples: ["Misinformation spreads quickly during crises.", "Check sources to avoid misinformation.", "Digital literacy helps fight misinformation."]
   },
   {
     id: 4,
@@ -49,13 +40,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˈmen.təl ˌwelˈbiː.ɪŋ/",
     wordForm: WordForm.NOUN,
     definition: "A person's emotional and psychological health.",
-    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400",
-    situation: "You decide to take a break from the internet to feel more peaceful.",
-    examples: [
-      "Excessive screen time can affect mental well-being.",
-      "Meditation is a great tool for improving mental well-being.",
-      "Prioritize your mental well-being over social media trends."
-    ]
+    imageUrl: createMascot("M100 110c10 0 20 10 20 20s-10 20-20 20-20-10-20-20 10-20 20-20", "#27ae60"),
+    situation: "Jessie meditating with closed eyes and a peaceful smile.",
+    examples: ["Protect your mental well-being first.", "Digital detoxes improve mental well-being.", "Sleep is vital for overall mental well-being."]
   },
   {
     id: 5,
@@ -63,13 +50,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˌɪn.fəˈmeɪ.ʃən ˈoʊ.vəˌloʊd/",
     wordForm: WordForm.NOUN,
     definition: "Having too much information to process effectively.",
-    imageUrl: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=400",
-    situation: "You've been reading 50 different news tabs and your brain feels frozen.",
-    examples: [
-      "Social media often causes information overload.",
-      "I suffered from information overload after the long meeting.",
-      "To prevent overload, focus on one source at a time."
-    ]
+    imageUrl: createMascot("M50 140h100M60 120h80M80 100h40"),
+    situation: "Jessie buried under a mountain of tablets and books.",
+    examples: ["I feel paralyzed by information overload.", "Limit sources to prevent overload.", "Information overload is a common digital issue."]
   },
   {
     id: 6,
@@ -77,13 +60,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˈdɪdʒ.ɪ.təl ˈbaʊn.dər.iz/",
     wordForm: WordForm.NOUN,
     definition: "Limits set to control online behavior and screen time.",
-    imageUrl: "https://images.unsplash.com/photo-1508921334112-45ad30f8d132?auto=format&fit=crop&q=80&w=400",
-    situation: "You turn off all app notifications after 8 PM every night.",
-    examples: [
-      "Setting digital boundaries helps reduce stress.",
-      "Establish digital boundaries by not checking work emails at home.",
-      "She set strict digital boundaries for her tablet use."
-    ]
+    imageUrl: createMascot("M60 140v-40h80v40"),
+    situation: "Jessie putting their phone in a locked cage with a timer.",
+    examples: ["Set digital boundaries for your health.", "No phones at dinner is a good boundary.", "He respects his digital boundaries every weekend."]
   },
   {
     id: 7,
@@ -91,13 +70,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˈdoʊ.pə.miːn ˈdrɪv.ən/",
     wordForm: WordForm.ADJECTIVE,
     definition: "Designed to trigger pleasure and reward in the brain.",
-    imageUrl: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=400",
-    situation: "An app sends you bright, colorful alerts every time someone interacts with you.",
-    examples: [
-      "Social media platforms are highly dopamine-driven.",
-      "The scrolling mechanism is a dopamine-driven design.",
-      "Video games use dopamine-driven rewards to keep you playing."
-    ]
+    imageUrl: createMascot("M100 140c20 0 20-20 20-20s-20-20-20-20-20 20-20 20 0 20 20 20"),
+    situation: "Jessie looking very excited at a bright red notification.",
+    examples: ["The app uses dopamine-driven mechanics.", "Social media is intentionally dopamine-driven.", "Scroll habits are often dopamine-driven."]
   },
   {
     id: 8,
@@ -105,13 +80,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/əˈdɪk.tɪv/",
     wordForm: WordForm.ADJECTIVE,
     definition: "Hard to stop doing or using.",
-    imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400",
-    situation: "You find yourself picking up your phone even when you don't need anything.",
-    examples: [
-      "Many people find short-form videos very addictive.",
-      "The new mobile game is incredibly addictive.",
-      "Sugary snacks can be as addictive as some habits."
-    ]
+    imageUrl: createMascot("M80 140h40v-40H80z", "#e74c3c"),
+    situation: "Jessie glued to the screen with a spiral in their eyes.",
+    examples: ["Short videos can be highly addictive.", "The game is fun but dangerously addictive.", "Smartphones are designed to be addictive."]
   },
   {
     id: 9,
@@ -119,13 +90,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˌsuː.pəˈfɪʃ.əl/",
     wordForm: WordForm.ADJECTIVE,
     definition: "Focused only on the surface, not deep or meaningful.",
-    imageUrl: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400",
-    situation: "Someone comments 'Cool!' on every post without actually reading them.",
-    examples: [
-      "Online connections can sometimes feel superficial.",
-      "He had a superficial understanding of the issue.",
-      "They had a superficial friendship based only on likes."
-    ]
+    imageUrl: createMascot("M100 110a20 20 0 1 1 0 40 20 20 0 0 1 0-40"),
+    situation: "Jessie only caring about how their fur looks in a selfie.",
+    examples: ["Their connection was purely superficial.", "Don't focus on superficial metrics.", "He avoided superficial conversations."]
   },
   {
     id: 10,
@@ -133,13 +100,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/dɪˈstræk.ʃən/",
     wordForm: WordForm.NOUN,
     definition: "Something that takes attention away from what matters.",
-    imageUrl: "https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=400",
-    situation: "You were trying to study, but you spent 30 minutes looking at memes instead.",
-    examples: [
-      "Social media is a major distraction during study.",
-      "I need a quiet room without any distraction.",
-      "The loud phone was a constant distraction."
-    ]
+    imageUrl: createMascot("M50 140l100-40"),
+    situation: "Jessie trying to read but chasing a floating 'notification' bug.",
+    examples: ["The constant dings are a distraction.", "I need a study space with no distraction.", "Turn off your phone to avoid distraction."]
   },
   {
     id: 11,
@@ -147,13 +110,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "",
     wordForm: WordForm.PHRASE,
     definition: "Spending way more time than planned, often following links.",
-    imageUrl: "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=400",
-    situation: "You clicked one video about cooking and now it's 3 AM and you're watching how to build a house in the woods.",
-    examples: [
-      "I went down the rabbit hole on YouTube for hours.",
-      "Researching lead me down a massive rabbit hole.",
-      "Be careful not to go down the rabbit hole of forums."
-    ]
+    imageUrl: createMascot("M100 110a30 30 0 1 0 0 60 30 30 0 0 0 0-60z", "#9b59b6"),
+    situation: "Jessie falling into a colorful spiral of links.",
+    examples: ["I went down the rabbit hole on Wikipedia.", "Careful not to fall down the rabbit hole.", "Research often leads down a rabbit hole."]
   },
   {
     id: 12,
@@ -161,13 +120,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "",
     wordForm: WordForm.PHRASE,
     definition: "Has both positive and negative effects.",
-    imageUrl: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&q=80&w=400",
-    situation: "The internet allows you to talk to anyone in the world, but it also lets anyone in the world bother you.",
-    examples: [
-      "Social media is a double-edged sword for teenagers.",
-      "Fame is often a double-edged sword.",
-      "AI is a double-edged sword for the labor market."
-    ]
+    imageUrl: createMascot("M70 140l60-60M130 140L70 80"),
+    situation: "Jessie holding a tablet that is bright but heavy.",
+    examples: ["Free apps are a double-edged sword.", "Technology is a double-edged sword.", "His fame proved to be a double-edged sword."]
   },
   {
     id: 13,
@@ -175,13 +130,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "",
     wordForm: WordForm.PHRASE,
     definition: "Affects someone's mental or emotional state.",
-    imageUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=400",
-    situation: "Seeing fake beauty standards all day makes you feel confused about your own appearance.",
-    examples: [
-      "Comparing yourself to models can mess with your head.",
-      "Gaslighting is a tactic that messes with a person's head.",
-      "Lack of sleep really messes with my head."
-    ]
+    imageUrl: createMascot("M70 120c10-20 50-20 60 0", "#34495e"),
+    situation: "Jessie looking dizzy after seeing too many edited photos.",
+    examples: ["Toxic comments mess with my head.", "That horror movie really messed with her head.", "Overthinking messes with your head."]
   },
   {
     id: 14,
@@ -189,13 +140,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "",
     wordForm: WordForm.PHRASE,
     definition: "Unable to stop checking social media updates.",
-    imageUrl: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=400",
-    situation: "You check your news feed while walking, while eating, and even right before you sleep.",
-    examples: [
-      "I realized I was addicted to the feed.",
-      "The scroll is designed to keep you addicted to the feed.",
-      "Many users are becoming addicted to the feed."
-    ]
+    imageUrl: createMascot("M80 140h40M80 130h40M80 120h40"),
+    situation: "Jessie with their paw stuck to a scrolling mouse.",
+    examples: ["He's completely addicted to the feed.", "I realized I was addicted to the feed.", "The algorithm keeps you addicted to the feed."]
   },
   {
     id: 15,
@@ -203,13 +150,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/faɪˈnæn.ʃəl sɪˈkjʊə.rə.ti/",
     wordForm: WordForm.NOUN,
     definition: "Having enough money to meet basic needs without stress.",
-    imageUrl: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=400",
-    situation: "You have a stable savings account and don't worry about paying rent next month.",
-    examples: [
-      "Financial security reduces anxiety about the future.",
-      "Achieving security requires careful planning.",
-      "Home ownership is a symbol of financial security."
-    ]
+    imageUrl: createMascot("M100 130a20 20 0 1 0 0-40 20 20 0 0 0 0 40z", "#f1c40f"),
+    situation: "Jessie sleeping on a giant coin.",
+    examples: ["Financial security is a life goal.", "Savings provide financial security.", "He worked hard for financial security."]
   },
   {
     id: 16,
@@ -217,13 +160,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˌwelˈbiː.ɪŋ/",
     wordForm: WordForm.NOUN,
     definition: "A person's overall happiness and health.",
-    imageUrl: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=400",
-    situation: "You are eating healthy, sleeping well, and spending time with friends.",
-    examples: [
-      "Money can improve well-being up to a point.",
-      "Work-life balance is crucial for well-being.",
-      "Exercise has a huge impact on your overall well-being."
-    ]
+    imageUrl: createMascot("M100 140c30 0 30-30 30-30s-30-30-30-30-30 30-30 30 0 30 30 30", "#2ecc71"),
+    situation: "Jessie stretching happily in a sunbeam.",
+    examples: ["Your well-being is the priority.", "Balance leads to better well-being.", "Eating well supports physical well-being."]
   },
   {
     id: 17,
@@ -231,13 +170,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/məˈtɪə.ri.ə.lɪ.zəm/",
     wordForm: WordForm.NOUN,
     definition: "The belief that possessions and money bring happiness.",
-    imageUrl: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=400",
-    situation: "Someone buys a new designer bag every week just to feel 'cool'.",
-    examples: [
-      "Extreme materialism can lead to feeling empty.",
-      "Society is often criticized for its materialism.",
-      "Minimalism is a reaction against materialism."
-    ]
+    imageUrl: createMascot("M60 140h80v-30h-80z"),
+    situation: "Jessie sitting on a mountain of shopping bags.",
+    examples: ["Society is prone to materialism.", "Materialism can feel hollow.", "He rejected materialism for simplicity."]
   },
   {
     id: 18,
@@ -245,13 +180,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/fʊlˈfɪl.mənt/",
     wordForm: WordForm.NOUN,
     definition: "A deep sense of satisfaction or purpose.",
-    imageUrl: "https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=400",
-    situation: "You just finished volunteering and feel that your life has real meaning.",
-    examples: [
-      "Many find fulfillment through helping others.",
-      "Relationships bring more fulfillment than money.",
-      "He searched for fulfillment in many careers."
-    ]
+    imageUrl: createMascot("M100 130L80 110l40 0z"),
+    situation: "Jessie looking proud after finishing a painting.",
+    examples: ["Helping others brings true fulfillment.", "She found fulfillment in her career.", "Hobbies provide a sense of fulfillment."]
   },
   {
     id: 19,
@@ -259,13 +190,9 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/ˌstresˈfriː/",
     wordForm: WordForm.ADJECTIVE,
     definition: "Without worry or pressure.",
-    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=400",
-    situation: "You are lying on a beach with no phone and no work to do.",
-    examples: [
-      "More money can make life more stress-free.",
-      "I'm looking forward to a stress-free weekend.",
-      "Her new job is much more stress-free."
-    ]
+    imageUrl: createMascot("M60 130h80", "#3498db"),
+    situation: "Jessie floating on a cloud.",
+    examples: ["A stress-free life is a dream.", "I want a stress-free vacation.", "She created a stress-free workspace."]
   },
   {
     id: 20,
@@ -273,348 +200,248 @@ export const VOCABULARY_DATA: VocabCard[] = [
     phonetics: "/laɪf ˌsæt.ɪsˈfæk.ʃən/",
     wordForm: WordForm.NOUN,
     definition: "How happy someone feels about their life overall.",
-    imageUrl: "https://images.unsplash.com/photo-1516307361252-cc30480e6541?auto=format&fit=crop&q=80&w=400",
-    situation: "Looking back at your year, you feel genuinely happy with your choices and progress.",
-    examples: [
-      "Income affects life satisfaction up to a point.",
-      "Connections are correlated with life satisfaction.",
-      "Age can lead to a sense of life satisfaction."
-    ]
+    imageUrl: createMascot("M100 110c10 0 20 10 20 20s-10 20-20 20-20-10-20-20 10-20 20-20"),
+    situation: "Jessie sitting contentedly in a rocking chair.",
+    examples: ["High life satisfaction is healthy.", "Meaningful work boosts life satisfaction.", "Friends improve your life satisfaction."]
   },
   {
     id: 21,
-    word: "Privilege",
-    phonetics: "/ˈprɪv.əl.ɪdʒ/",
+    word: "Echo chamber",
+    phonetics: "/ˈek.oʊ ˌtʃeɪm.bər/",
     wordForm: WordForm.NOUN,
-    definition: "An advantage some people have.",
-    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=400",
-    situation: "A student gets to travel the world because their parents pay for everything.",
-    examples: [
-      "Financial privilege can open many doors.",
-      "It's a privilege to study at this university.",
-      "Recognize your own privilege in this situation."
-    ]
+    definition: "An environment where you only encounter confirming opinions.",
+    imageUrl: createMascot("M60 100a40 40 0 0 1 80 0v40h-80z"),
+    situation: "Jessie inside a box made of mirrors, repeating its own meow.",
+    examples: ["Social media creates echo chambers.", "Step outside your echo chamber.", "Diverse news prevents an echo chamber."]
   },
   {
     id: 22,
-    word: "Emotional needs",
-    phonetics: "/ɪˈməʊ.ʃən.əl niːdz/",
+    word: "FOMO",
+    phonetics: "/ˈfoʊ.moʊ/",
     wordForm: WordForm.NOUN,
-    definition: "Needs like love, connection, and belonging.",
-    imageUrl: "https://images.unsplash.com/photo-1516589174184-c685c671d3ee?auto=format&fit=crop&q=80&w=400",
-    situation: "You feel lonely even though you have a high-paying job because you have no close friends.",
-    examples: [
-      "Money cannot replace emotional needs.",
-      "Children have basic emotional needs for security.",
-      "Healthy connections fulfill our emotional needs."
-    ]
+    definition: "The fear of missing out on rewarding experiences.",
+    imageUrl: createMascot("M60 60h80v80h-80zM70 110l60-10"),
+    situation: "Jessie looking at a party through a window, looking sad.",
+    examples: ["I felt FOMO seeing their vacation.", "FOMO makes us check phones too often.", "Practice JOMO instead of FOMO."]
   },
   {
     id: 23,
-    word: "Trade-off",
-    phonetics: "/ˈtreɪd.ɒf/",
+    word: "Doomscrolling",
+    phonetics: "/ˈduːm.skroʊ.lɪŋ/",
     wordForm: WordForm.NOUN,
-    definition: "A balance between two things where one is lost.",
-    imageUrl: "https://images.unsplash.com/photo-1454165833767-027ffea9e787?auto=format&fit=crop&q=80&w=400",
-    situation: "You took a high-paying job, but now you have no time to see your family.",
-    examples: [
-      "High salaries often come with trade-offs in time.",
-      "There's a trade-off between speed and quality.",
-      "Living in the city is a trade-off for higher rent."
-    ]
+    definition: "The act of continuously scrolling through bad news.",
+    imageUrl: createMascot("M80 140c0-20 40-20 40 0", "#e74c3c"),
+    situation: "Jessie scrolling forever with a sad face late at night.",
+    examples: ["Doomscrolling affects your sleep.", "Stop doomscrolling and read a book.", "I found myself doomscrolling for hours."]
   },
   {
     id: 24,
-    word: "Meaningful",
-    phonetics: "/ˈmiː.nɪŋ.fəl/",
-    wordForm: WordForm.ADJECTIVE,
-    definition: "Having purpose or emotional value.",
-    imageUrl: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=400",
-    situation: "Having a long, deep conversation with your best friend late at night.",
-    examples: [
-      "Meaningful relationships matter more than wealth.",
-      "I want a career that is socially meaningful.",
-      "We had a very meaningful conversation today."
-    ]
+    word: "Digital footprint",
+    phonetics: "/ˈdɪdʒ.ɪ.təl ˈfʊt.prɪnt/",
+    wordForm: WordForm.NOUN,
+    definition: "The information about a person that exists on the internet.",
+    imageUrl: createMascot("M60 140c0-10 10-20 20-20s20 10 20 20"),
+    situation: "Jessie walking and leaving glowing paw prints on a screen.",
+    examples: ["Watch your digital footprint carefully.", "Your digital footprint lasts forever.", "Employers check your digital footprint."]
   },
   {
     id: 25,
-    word: "Buy peace of mind",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Reduce stress or worry.",
-    imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
-    situation: "You buy health insurance so you don't have to worry about medical bills if you get sick.",
-    examples: [
-      "Having savings really buys peace of mind.",
-      "Insurance is worth it to buy peace of mind.",
-      "A security system bought us peace of mind."
-    ]
+    word: "Algorithmic bias",
+    phonetics: "/ˌæl.ɡəˈrɪð.mɪk ˈbaɪ.əs/",
+    wordForm: WordForm.NOUN,
+    definition: "Unfair results produced by computer programs.",
+    imageUrl: createMascot("M80 80h40v80h-40z", "#95a5a6"),
+    situation: "A robot cat choosing only orange cats from a crowd.",
+    examples: ["Algorithmic bias can lead to unfairness.", "Developers must fix algorithmic bias.", "Bias in data causes algorithmic bias."]
   },
   {
     id: 26,
-    word: "Chase money",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Focus too much on earning.",
-    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400",
-    situation: "Working 80 hours a week just to buy a bigger car you don't even have time to drive.",
-    examples: [
-      "Some people chase money and forget to live.",
-      "I don't want to spend my life chasing money.",
-      "Chasing money often leads to high stress."
-    ]
+    word: "Privacy setting",
+    phonetics: "/ˈpraɪ.və.si ˌset.ɪŋ/",
+    wordForm: WordForm.NOUN,
+    definition: "Controls for who can see your information.",
+    imageUrl: createMascot("M100 70l40 20v40l-40 20-40-20v-40z"),
+    situation: "Jessie hiding behind a large, secure shield.",
+    examples: ["Check your privacy settings often.", "Strengthen your privacy settings now.", "Privacy settings protect your data."]
   },
   {
     id: 27,
-    word: "Champagne problem",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "A problem that exists only because someone is privileged or wealthy.",
-    imageUrl: "https://images.unsplash.com/photo-1543157148-f682117511c1?auto=format&fit=crop&q=80&w=400",
-    situation: "Complaining that your private jet doesn't have your favorite brand of sparkling water.",
-    examples: [
-      "Choosing luxury vacations is a champagne problem.",
-      "Slow internet today? Total champagne problem.",
-      "Too much organic food is a champagne problem."
-    ]
+    word: "Fact-checking",
+    phonetics: "/ˈfækt ˌtʃek.ɪŋ/",
+    wordForm: WordForm.NOUN,
+    definition: "Verifying the truth of a statement.",
+    imageUrl: createMascot("M90 90a10 10 0 1 0 20 0 10 10 0 0 0-20 0M105 105l20 20"),
+    situation: "Jessie looking at a post through a magnifying glass.",
+    examples: ["Fact-checking is essential today.", "Always do your own fact-checking.", "The site provides fact-checking tools."]
   },
   {
     id: 28,
-    word: "Living paycheck to paycheck",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Using almost all your money as soon as you get paid.",
-    imageUrl: "https://images.unsplash.com/photo-1579621970795-87f9ac756a70?auto=format&fit=crop&q=80&w=400",
-    situation: "You have $0 in your bank account the day before your next salary arrives.",
-    examples: [
-      "I'm living paycheck to paycheck, it's hard.",
-      "Millions are still living paycheck to paycheck.",
-      "He stopped living paycheck to paycheck recently."
-    ]
+    word: "Influencer",
+    phonetics: "/ˈɪn.flu.ən.sər/",
+    wordForm: WordForm.NOUN,
+    definition: "A person with the power to affect others' decisions.",
+    imageUrl: createMascot("M100 80a20 20 0 1 0 0 40 20 20 0 0 0 0-40zM80 140h40"),
+    situation: "Jessie with a ring light and a camera on a tripod.",
+    examples: ["She is a popular lifestyle influencer.", "Influencers promote many products.", "Being an influencer requires hard work."]
   },
   {
     id: 29,
-    word: "Worth the bag",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Something is worth the money / effort to earn money.",
-    imageUrl: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&q=80&w=400",
-    situation: "The job is incredibly difficult, but they are paying you $500,000 a year.",
-    examples: [
-      "The job is stressful, but it's worth the bag.",
-      "Weekend work makes the bonus worth the bag.",
-      "Is extra study really worth the bag?"
-    ]
+    word: "Viral",
+    phonetics: "/ˈvaɪ.rəl/",
+    wordForm: WordForm.ADJECTIVE,
+    definition: "Spreading very quickly on the internet.",
+    imageUrl: createMascot("M100 80l10 30 30 0-20 20 10 30-30-20-30 20 10-30-20-20 30 0z", "#f39c12"),
+    situation: "Jessie jumping over a star with millions of tiny fans.",
+    examples: ["The cat video went viral instantly.", "Every creator wants to go viral.", "A viral post can change your life."]
   },
   {
     id: 30,
-    word: "Remote work",
-    phonetics: "/riˈmoʊt wɜːrk/",
+    word: "Clickbait",
+    phonetics: "/ˈklɪk.beɪt/",
     wordForm: WordForm.NOUN,
-    definition: "Working outside the office, usually from home.",
-    imageUrl: "https://images.unsplash.com/photo-1587560699334-bea93391dcef?auto=format&fit=crop&q=80&w=400",
-    situation: "You do your job from your laptop while sitting on your sofa in pajamas.",
-    examples: [
-      "Remote work became popular after the pandemic.",
-      "Companies offer remote work as a benefit.",
-      "The shift changed how teams communicate."
-    ]
+    definition: "Content designed to encourage users to click a link.",
+    imageUrl: createMascot("M100 60v80M90 140l10 10 10-10"),
+    situation: "A fishing rod with a shiny glowing phone as bait.",
+    examples: ["I fell for the clickbait headline.", "Clickbait often leads to poor content.", "Avoid using clickbait to gain views."]
   },
   {
     id: 31,
-    word: "Work-life balance",
-    phonetics: "/ˈwɜːrk laɪf ˈbæl.əns/",
+    word: "Cyberbullying",
+    phonetics: "/ˈsaɪ.bəˌbʊl.i.ɪŋ/",
     wordForm: WordForm.NOUN,
-    definition: "Balance between work and personal life.",
-    imageUrl: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&q=80&w=400",
-    situation: "You finish work at 5 PM sharp and spend the rest of the night playing with your cat.",
-    examples: [
-      "Remote work can improve work-life balance.",
-      "Balance is crucial for mental health.",
-      "She struggled with her work-life balance."
-    ]
+    definition: "The use of electronic communication to bully someone.",
+    imageUrl: createMascot("M70 140l60-20", "#c0392b"),
+    situation: "Jessie looking sad while mean emojis float nearby.",
+    examples: ["Schools must prevent cyberbullying.", "Cyberbullying can cause deep pain.", "Report any acts of cyberbullying."]
   },
   {
     id: 32,
-    word: "Productivity",
-    phonetics: "/ˌproʊ.dʌkˈtɪv.ə.t̬i/",
+    word: "Digital detox",
+    phonetics: "/ˌdɪdʒ.ɪ.təl ˈdiː.tɒks/",
     wordForm: WordForm.NOUN,
-    definition: "How efficiently you work.",
-    imageUrl: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=400",
-    situation: "You finished all your weekly tasks in just two days because you were so focused.",
-    examples: [
-      "People are more productive at home.",
-      "Tools can significantly boost productivity.",
-      "Interruptions can harm your productivity."
-    ]
+    definition: "A period when you stop using electronic devices.",
+    imageUrl: createMascot("M80 100h40v40H80zM100 90v-20"),
+    situation: "Jessie putting their phone in a deep drawer.",
+    examples: ["I am on a digital detox this week.", "Digital detoxes help you recharge.", "Try a weekend digital detox."]
   },
   {
     id: 33,
-    word: "Commute",
-    phonetics: "/kəˈmjuːt/",
-    wordForm: "n / v",
-    definition: "Travel between home and work.",
-    imageUrl: "https://images.unsplash.com/photo-1543269664-76ad3997d9ea?auto=format&fit=crop&q=80&w=400",
-    situation: "You spend an hour every morning stuck in traffic on your way to the office.",
-    examples: [
-      "I save time by not commuting.",
-      "His daily commute takes nearly two hours.",
-      "She uses her commute to catch up on podcasts."
-    ]
+    word: "Screen time",
+    phonetics: "/ˈskriːn taɪm/",
+    wordForm: WordForm.NOUN,
+    definition: "The amount of time spent looking at a screen.",
+    imageUrl: createMascot("M100 80v40l20 0M100 60a60 60 0 1 0 0 120 60 60 0 0 0 0-120"),
+    situation: "Jessie looking at a giant clock made of a phone.",
+    examples: ["Reduce your screen time before bed.", "My screen time was too high today.", "Monitor your children's screen time."]
+  },
+  {
+    id: 34,
+    word: "Engagement",
+    phonetics: "/ɪnˈɡeɪdʒ.mənt/",
+    wordForm: WordForm.NOUN,
+    definition: "User interaction with content (likes, shares).",
+    imageUrl: createMascot("M80 80c-10-10-30 0-10 20l20 20 20-20c20-20 0-30-10-20z", "#e91e63"),
+    situation: "Jessie juggling hearts and stars.",
+    examples: ["The post had high engagement rates.", "Engagement is key for influencers.", "Ask questions to boost engagement."]
   },
   {
     id: 35,
-    word: "Collaboration",
-    phonetics: "/kəˌlæb.əˈreɪ.ʃən/",
-    wordForm: WordForm.NOUN,
-    definition: "Working together with others.",
-    imageUrl: "https://images.unsplash.com/photo-1522071823991-b9671f30c46f?auto=format&fit=crop&q=80&w=400",
-    situation: "A team of five people joins a video call to brainstorm ideas for a new project.",
-    examples: [
-      "Office work encourages collaboration.",
-      "We used a document for real-time collaboration.",
-      "The project failed due to a lack of collaboration."
-    ]
+    word: "Community-driven",
+    phonetics: "/kəˈmjuː.nə.ti ˈdrɪv.ən/",
+    wordForm: WordForm.ADJECTIVE,
+    definition: "Led or inspired by a group of people.",
+    imageUrl: createMascot("M100 60a20 20 0 1 0 0 40 20 20 0 0 0 0-40zM60 100a20 20 0 1 0 0 40 20 20 0 0 0 0-40zM140 100a20 20 0 1 0 0 40 20 20 0 0 0 0-40z"),
+    situation: "A circle of cats holding paws together.",
+    examples: ["The project is community-driven.", "We thrive in community-driven spaces.", "Open source is community-driven."]
   },
   {
     id: 36,
-    word: "Isolation",
-    phonetics: "/ˌaɪ.səˈleɪ.ʃən/",
+    word: "Personal growth",
+    phonetics: "/ˈpɜː.sən.əl ɡroʊθ/",
     wordForm: WordForm.NOUN,
-    definition: "Feeling alone or disconnected.",
-    imageUrl: "https://images.unsplash.com/photo-1454165833767-027ffea9e787?auto=format&fit=crop&q=80&w=400",
-    situation: "You haven't seen another human being in person for three days because you live and work alone.",
-    examples: [
-      "Remote workers may feel isolated.",
-      "Isolation can lead to feeling low.",
-      "Events help combat isolation at home."
-    ]
+    definition: "Improving your skills and character over time.",
+    imageUrl: createMascot("M100 140v-60M80 100l20-20 20 20", "#27ae60"),
+    situation: "Jessie watering a plant that is growing into a cat shape.",
+    examples: ["Reading supports personal growth.", "Challenges are part of personal growth.", "Set goals for your personal growth."]
   },
   {
     id: 37,
-    word: "Flexibility",
-    phonetics: "/ˌflek.səˈbɪl.ə.t̬i/",
+    word: "Self-care",
+    phonetics: "/ˌselfˈkeər/",
     wordForm: WordForm.NOUN,
-    definition: "Ability to choose time or place of work.",
-    imageUrl: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=400",
-    situation: "You decide to work from a coffee shop today because you want a change of scenery.",
-    examples: [
-      "Flexibility is a key benefit of remote work.",
-      "Employees appreciate having flexibility.",
-      "The manager showed great flexibility."
-    ]
+    definition: "The practice of taking care of your own health.",
+    imageUrl: createMascot("M60 140h80v-40h-80zM80 100a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"),
+    situation: "Jessie in a bathtub with cucumbers on its eyes.",
+    examples: ["Self-care is not selfish.", "Make time for daily self-care.", "Self-care prevents burnout."]
   },
   {
     id: 38,
-    word: "Social fabric",
-    phonetics: "/ˈsoʊ.ʃəl ˈfæb.rɪk/",
+    word: "Resilience",
+    phonetics: "/rɪˈzɪl.i.əns/",
     wordForm: WordForm.NOUN,
-    definition: "The network of relationships that hold a society together.",
-    imageUrl: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=400",
-    situation: "The local neighbors all know each other and help out when someone is sick.",
-    examples: [
-      "Remote work can weaken the social fabric.",
-      "Events are essential for the social fabric.",
-      "Trust is the thread that binds the social fabric."
-    ]
+    definition: "The ability to recover quickly from difficulties.",
+    imageUrl: createMascot("M100 140l-20-60 40 0z"),
+    situation: "Jessie standing strong against a wind of emojis.",
+    examples: ["Resilience is built through hardship.", "She showed great resilience in life.", "Practice resilience every day."]
   },
   {
     id: 39,
-    word: "Daily stand-up",
-    phonetics: "/ˈdeɪ.li ˈstænd.ʌp/",
+    word: "Mindfulness",
+    phonetics: "/ˈmaɪnd.fəl.nəs/",
     wordForm: WordForm.NOUN,
-    definition: "A short daily team meeting where members share updates.",
-    imageUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=400",
-    situation: "Every morning at 9:00 AM, your whole team meets for 10 minutes to talk about what they're doing.",
-    examples: [
-      "I update my team during the daily stand-up.",
-      "The stand-up is limited to fifteen minutes.",
-      "We use the stand-up to identify blockers."
-    ]
+    definition: "Focusing on being intensely aware of the present.",
+    imageUrl: createMascot("M100 100a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM100 80a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"),
+    situation: "Jessie balancing a small stone on its nose.",
+    examples: ["Mindfulness reduces daily stress.", "I practice mindfulness in the morning.", "Focus on your breath for mindfulness."]
   },
   {
     id: 40,
-    word: "Work from anywhere",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Ability to work without being tied to an office.",
-    imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=400",
-    situation: "You are working on your reports while sitting in a cafe in Bali.",
-    examples: [
-      "Remote jobs allow you to work from anywhere.",
-      "The policy has boosted morale.",
-      "She became a nomad to work from anywhere."
-    ]
+    word: "Connection",
+    phonetics: "/kəˈnek.ʃən/",
+    wordForm: WordForm.NOUN,
+    definition: "A relationship in which things or people are linked.",
+    imageUrl: createMascot("M60 100h80M60 110h80", "#e67e22"),
+    situation: "Two cats connected by a glowing piece of yarn.",
+    examples: ["We have a strong emotional connection.", "Connection is vital for happiness.", "Build connections with your team."]
   },
   {
     id: 41,
-    word: "Burned out",
-    phonetics: "",
-    wordForm: WordForm.ADJECTIVE,
-    definition: "Extremely tired or stressed from work.",
-    imageUrl: "https://images.unsplash.com/photo-1541199222941-2a621643f87c?auto=format&fit=crop&q=80&w=400",
-    situation: "You've been working 12 hours a day for a month and now you can't even look at your computer without crying.",
-    examples: [
-      "Remote workers can get burned out.",
-      "I felt burned out after the project.",
-      "Recognizing the signs of being burned out is key."
-    ]
+    word: "Authenticity",
+    phonetics: "/ˌɔː.θenˈtɪs.ə.ti/",
+    wordForm: WordForm.NOUN,
+    definition: "The quality of being real or true.",
+    imageUrl: createMascot("M100 100a30 30 0 1 0 0 60 30 30 0 0 0 0-60z"),
+    situation: "Jessie taking off a 'perfect cat' mask.",
+    examples: ["Authenticity is attractive in people.", "Be yourself with true authenticity.", "We value authenticity in our brand."]
   },
   {
     id: 42,
-    word: "Hybrid model",
-    phonetics: "",
-    wordForm: WordForm.NOUN,
-    definition: "A mix of remote and office work.",
-    imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400",
-    situation: "You go to the office on Tuesdays and Thursdays, and work from home the rest of the week.",
-    examples: [
-      "Companies choose a hybrid model now.",
-      "The hybrid model offers the best of both worlds.",
-      "We are learning to run a hybrid model."
-    ]
+    word: "Purpose-driven",
+    phonetics: "/ˈpɜː.pəs ˌdrɪv.ən/",
+    wordForm: WordForm.ADJECTIVE,
+    definition: "Motivated by a strong sense of intention.",
+    imageUrl: createMascot("M100 140l0-100M80 60l20-20 20 20"),
+    situation: "Jessie following a bright North Star.",
+    examples: ["He leads a purpose-driven life.", "Our company is purpose-driven.", "Purpose-driven work feels meaningful."]
   },
   {
     id: 43,
-    word: "Nine-to-five",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "A traditional office work schedule.",
-    imageUrl: "https://images.unsplash.com/photo-1495592822108-9e6261896da8?auto=format&fit=crop&q=80&w=400",
-    situation: "You arrive at work exactly at 9:00 AM and leave exactly at 5:00 PM every single day.",
-    examples: [
-      "I don't like the nine-to-five lifestyle.",
-      "Jobs still follow a nine-to-five schedule.",
-      "Switching was a big adjustment."
-    ]
+    word: "Social proof",
+    phonetics: "/ˈsoʊ.ʃəl pruːf/",
+    wordForm: WordForm.NOUN,
+    definition: "Copying others' behavior to be correct in a situation.",
+    imageUrl: createMascot("M60 140l20-20M100 140l20-20M140 140l20-20"),
+    situation: "A line of cats following Jessie's lead.",
+    examples: ["Testimonials are a form of social proof.", "We look for social proof when buying.", "Social proof influences our choices."]
   },
   {
     id: 44,
-    word: "Clock in / Clock out",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Start or finish work officially.",
-    imageUrl: "https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&q=80&w=400",
-    situation: "You swipe your badge at the entrance to record your arrival time at 8:55 AM.",
-    examples: [
-      "I clock in at 9 a.m. every day.",
-      "Don't forget to clock out.",
-      "The system makes it easy to clock in."
-    ]
-  },
-  {
-    id: 45,
-    word: "Work around the clock",
-    phonetics: "",
-    wordForm: WordForm.PHRASE,
-    definition: "Work for very long hours.",
-    imageUrl: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=400",
-    situation: "The deadline is tomorrow, so the entire team is working all day and all night to finish.",
-    examples: [
-      "We work around the clock during busy periods.",
-      "The team worked around the clock to find them.",
-      "He had to work around the clock to finish."
-    ]
+    word: "Networking",
+    phonetics: "/ˈnet.wɜː.kɪŋ/",
+    wordForm: WordForm.NOUN,
+    definition: "Connecting with people for professional support.",
+    imageUrl: createMascot("M60 60l80 80M140 60l-80 80"),
+    situation: "Jessie connecting colored dots on a board.",
+    examples: ["Networking is key for career growth.", "Attend events for better networking.", "I improved my networking skills."]
   }
 ];
